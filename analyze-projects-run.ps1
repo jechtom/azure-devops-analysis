@@ -1,1 +1,1 @@
-﻿./analyze-projects.ps1 ./output/projects-data.json >> ./output/projects-analysis.md
+﻿./analyze-projects.ps1 ./output/projects-data.json > ./output/projects-analysis.md

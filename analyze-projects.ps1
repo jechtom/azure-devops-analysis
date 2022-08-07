@@ -33,7 +33,7 @@ Write-Output "[[_TOC_]]" # table of content (AzureDevOps Wiki)
 Write-Output ""
 Write-Output "## Projects and repos tree"
 Write-Output '```'
-$data | Select-Object @{ Name="projectName"; Expression={ $_.project.name }}, name, lastCommitDaysAgo, refs | Group-Object -Property projectName | Sort-Object -Property Name | %{ 
+$data | Select-Object @{ Name="projectName"; Expression={ $_.project.name }}, name, lastCommitDaysAgo, isEmpty, refs | Group-Object -Property projectName | Sort-Object -Property Name | %{ 
     Write-Output "- project: $($_.Name)"
     $_.Group | Sort-Object -Property name | %{
         if($_.isEmpty -eq $true) {
