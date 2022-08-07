@@ -89,9 +89,11 @@ Write-Output ""
 Write-Output "## Branches details (non-empty repos)"
 $data | Where-Object -Property isEmpty -eq $false | Sort-Object -Property pathName | %{ 
     Write-Output "### Branches details - $($_.pathName)"
-    Write-Output '```'
+    Write-Output ''
+    Write-Output "|Branch|Last Commit|Default Branch Relation|"
+    Write-Output "|--|--|--|"
     $_.refs | Sort-Object -Property lastCommitDaysAgo | Where-Object -Property isBranch -eq $true | %{
-        Write-Output "  +- branch [$($_.name)] - commit $($_.lastCommitDaysAgo) days ago - default branch relation: $($_.defaultBranchRelation)"
+        Write-Output "|``[$($_.name)]``|$($_.lastCommitDaysAgo) days ago|``$($_.defaultBranchRelation)``|"
     }
-    Write-Output '```'
+    Write-Output ''
 }
